@@ -61,4 +61,3 @@ class GeneralViewSet(viewsets.ModelViewSet):
             instance.save()
             return Response({'message' : 'Record deleted successfully'}, status = status.HTTP_200_OK)
         return Response({'error' : 'Record not found'}, status = status.HTTP_400_BAD_REQUEST)
-

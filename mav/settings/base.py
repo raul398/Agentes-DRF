@@ -24,16 +24,21 @@ BASE_APPS = [
 
 LOCAL_APPS = [
    'apps.base',
+   'apps.users',
    'apps.agentes',
+   'apps.cpd',
 ]
 
 THIRD_APPS = [
     'rest_framework',
+    'rest_framework.authtoken',
     'simple_history',
 ]
 
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
 
+# Tiempo de xpiracion del token
+TOKEN_EXPIRED_AFTER_SECOND = 10
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -97,11 +102,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
