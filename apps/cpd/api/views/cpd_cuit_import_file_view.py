@@ -1,6 +1,9 @@
-from rest_framework import status
+'''from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view'''
+
+from apps.base.api.views.tools import *
+
 from apps.cpd.api.serializers.cpd_cuit_serializers import Cpd_CuitSerializers
 
 

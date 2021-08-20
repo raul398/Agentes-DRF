@@ -30,6 +30,7 @@ LOCAL_APPS = [
 ]
 
 THIRD_APPS = [
+    "corsheaders" ,
     'rest_framework',
     'rest_framework.authtoken',
     'simple_history',
@@ -41,6 +42,7 @@ INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
 TOKEN_EXPIRED_AFTER_SECOND = 900
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -116,6 +118,29 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+'''
+Esta configuraciuon indica desde que host estara permitido recibir peticiones
+CORS_ALLOWED_ORIGINS  = [
+     "https://example.com" ,
+     "https://sub.example.com" ,
+     "http: // localhost: 8080" ,
+     "http://127.0.0.1:9000" ,
+]
+'''
+
+# En este caso le indico que sera solo del puerto 3000
+CORS_ALLOWED_ORIGINS  = [
+     "http://127.0.0.1:3000"
+]
+
+# Anteriormente se llamaba a esta configuración CORS_ORIGIN_WHITELIST, 
+# que todavía funciona como un alias, con el nuevo nombre teniendo prioridad.
+# Como da error con el valor anterior, configuro tamien con el nombre de WHITELIST
+
+CORS_ORIGIN_WHITELIST  = [
+     "http://127.0.0.1:3000"
+]
 
 
 # Default primary key field type

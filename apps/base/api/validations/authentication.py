@@ -1,9 +1,11 @@
-from datetime import timedelta
+'''from datetime import timedelta
 from django.utils import timezone
 from django.conf import settings
 from rest_framework import status
-from rest_framework.authentication import TokenAuthentication
+from rest_framework.authentication import TokenAuthentication'''
 #from rest_framework.exceptions import AuthenticationFailed
+
+from apps.base.api.views.tools import *
 
 
 # Este clase verifica el tiempo de vida del token.

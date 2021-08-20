@@ -1,11 +1,12 @@
-from datetime import datetime
+'''from datetime import datetime
 from http.client import error
 from django.contrib.sessions.models import Session
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.authtoken.models import Token
+from rest_framework.authtoken.models import Token'''
 
+from apps.base.api.views.tools import *
 
 class Logout(APIView):
 

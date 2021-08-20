@@ -1,7 +1,9 @@
-from datetime import date
+'''from datetime import date
 from rest_framework.viewsets import ReadOnlyModelViewSet
 from drf_renderer_xlsx.mixins import XLSXFileMixin
-from drf_renderer_xlsx.renderers import XLSXRenderer
+from drf_renderer_xlsx.renderers import XLSXRenderer'''
+
+from apps.base.api.views.tools import *
 
 
 

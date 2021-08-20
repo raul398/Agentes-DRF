@@ -1,7 +1,10 @@
-from rest_framework import status
+'''from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
-from rest_framework.pagination import PageNumberPagination
+from rest_framework.pagination import PageNumberPagination'''
+
+from apps.base.api.views.tools import *
+
 from apps.base.api.validations.authentication_mixins import Authentication
 #from rest_framework.decorators import api_view
 
