@@ -38,7 +38,7 @@ THIRD_APPS = [
 INSTALLED_APPS = BASE_APPS + LOCAL_APPS + THIRD_APPS
 
 # Tiempo de xpiracion del token
-TOKEN_EXPIRED_AFTER_SECOND = 10
+TOKEN_EXPIRED_AFTER_SECOND = 900
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

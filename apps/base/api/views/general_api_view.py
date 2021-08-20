@@ -2,13 +2,16 @@ from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
+from apps.base.api.validations.authentication_mixins import Authentication
 #from rest_framework.decorators import api_view
 
 class GeneralPagination(PageNumberPagination):
     page_size = None
 
-# Esta es la view general que identifica el metodo utilizado y permite realizar las diferentes acciones.
-class GeneralViewSet(viewsets.ModelViewSet):
+# Esta es la view general que identifica el metodo utilizado 
+# permite realizar las diferentes acciones.
+# Ademas hereda de Authentication para la validacion del token.
+class GeneralViewSet(Authentication, viewsets.ModelViewSet):
     # Se ingresa si se requiere un serializer de verifcacion
     serializer_test = None
     # Cantidad de registros por request
