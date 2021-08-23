@@ -8,28 +8,6 @@ from apps.base.api.views.tools import *
 
 from apps.users.api.serializers.user_token_serializers import UserTokenSerializer
 
-
-
-class TokenRefreshAPIView(APIView):
-    
-    def get(self, request, *args, **kwars):
-        username = request.GET.get('username')
-        try:
-            user_token = Token.objects.get(
-                user = UserTokenSerializer().Meta.model.objects.filter(
-                    username = username
-                    ).first()
-            )
-
-            return Response(
-                {'token': user_token.key},
-                status = status.HTTP_200_OK
-            )
-
-        except:
-            return Response({'error': 'Invalid credentials'}, status = status.HTTP_400_BAD_REQUEST)
-
-
 class Login(ObtainAuthToken):
 
     def post(self, request, *args, **kwars):

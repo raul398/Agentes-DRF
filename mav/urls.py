@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from apps.users.api.views.login import Login, TokenRefreshAPIView
+from apps.users.api.views.login import Login
 from apps.users.api.views.logout import Logout
+from apps.users.api.views.token_refresh import TokenRefreshAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),

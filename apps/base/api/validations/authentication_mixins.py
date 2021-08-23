@@ -8,6 +8,7 @@ from apps.base.api.views.tools import *
 from apps.base.api.validations.authentication import ExpiredTokenAuthentication
 
 class Authentication(object):
+    user = None
 
     def get_user(self, request):
         ''' La maner acorrecta de enviar es Authorization: token js49ied83j47dhwoq9234dhd7ee73
@@ -23,15 +24,15 @@ class Authentication(object):
                 # b'js49ied83j47dhwoq9234dhd7ee73' --> 'js49ied83j47dhwoq9234dhd7ee73'
                 token = token[1].decode()
             except:
-                return (None, 'No se han enviado las credenciales', is_expired, status.HTTP_409_CONFLICT)
+                return ('No se han enviado las credenciales', is_expired, status.HTTP_409_CONFLICT)
             expire_token = ExpiredTokenAuthentication()
-            user, token, message, is_expired, state = expire_token.authenticate_credentials(token)
-            return (user, message, is_expired, state)
-        return (None, 'No se han enviado las credenciales', is_expired, status.HTTP_409_CONFLICT)
+            self.user, token, message, is_expired, state = expire_token.authenticate_credentials(token)
+            return (message, is_expired, state)
+        return ('No se han enviado las credenciales correctamente', is_expired, status.HTTP_409_CONFLICT)
 
     def dispatch(self, request, *args, **kwargs):
-        user, message, is_expired, state = self.get_user(request)
-        if type(user) != str and message == None:
+        message, is_expired, state = self.get_user(request)
+        if type(self.user) != str and message == None:
             return super().dispatch(request, *args, **kwargs)
         response = Response({'error': message, 'expired': is_expired}, status = state)
         response.accepted_renderer = JSONRenderer()
